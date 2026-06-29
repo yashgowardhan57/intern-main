@@ -1,0 +1,37 @@
+* {
+  font-family: 'Gill Sans', 'Lucida Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #EBEBEB;
+  padding: 40px;
+}
+
+h1 {
+  background-color: #FFCC00;
+  color: #1E1E1E;
+  font-size: 70pt;
+  padding: 30px 40px;
+  margin-bottom: 40px;
+  border-radius: 8px;
+}
+
+h2 {
+  color: #1E1E1E;
+  font-size: 38pt;
+  margin-top: 36px;
+  margin-bottom: 12px;
+  padding-left: 20px;
+  border-left: 6px solid #FFCC00;
+}
+
+p {
+  color: #1E1E1E;
+  font-size: 18pt;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  padding-left: 26px;
+}
