@@ -1,0 +1,8 @@
+{
+  "deviceID": "weather-pro-123",
+  "deviceType": "Weather Station",
+  "timestamp": 1673876040000,
+  "location": "United States/New York/Brooklyn/Factory 1/Section A",
+  "operationStatus": "active",
+  "temp": 22
+}

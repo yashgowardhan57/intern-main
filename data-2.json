@@ -1,0 +1,16 @@
+{
+  "device": {
+    "id": "weather-pro-123",
+    "type": "Weather Station"
+  },
+  "timestamp": "2023-01-16T13:34:00.000Z",
+  "country": "United States",
+  "city": "New York",
+  "area": "Brooklyn",
+  "factory": "Factory 1",
+  "section": "Section A",
+  "data": {
+    "status": "active",
+    "temperature": 22
+  }
+}
