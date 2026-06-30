@@ -1,27 +1,1280 @@
-<html>
-  <head>
-    <title>Tips for Financial Cybersecurity</title>
-    <link href="index.css" type="text/css" rel="stylesheet">
-  </head>
-  <body>
-    <h1>Tips for Financial Cybersecurity</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex College of Technology</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <h2>Enable Multifactor Authentication</h2>
-    <p>Multifactor authentication (MFA) adds a critical second layer of security beyond your password. Use an authenticator app or biometrics like a fingerprint rather than SMS codes when possible, since SIM-swapping attacks can bypass text message verification. MFA significantly reduces the likelihood of a criminal taking over your account even if your password is stolen.</p>
+        html {
+            scroll-behavior: smooth;
+        }
 
-    <h2>Watch What You Click</h2>
-    <p>Phishing emails and smishing texts remain the most common entry points for account takeovers. Never click links or download attachments from unsolicited messages claiming to be from your bank. Instead, type the bank's official URL directly into your browser or use its mobile app. Cybercriminals also create fake websites that mimic financial institution login pages to steal your credentials.</p>
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background: #0a0a1a;
+            color: #fff;
+        }
 
-    <h2>Use Strong, Unique Passwords</h2>
-    <p>Use a different password for every financial account and change them regularly. A password manager can generate and store complex passwords that mix uppercase and lowercase letters, numbers, and special characters. Avoid using personal information like your name or birthdate, and never share passwords over email, text, or phone.</p>
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
 
-    <h2>Monitor Accounts and Statements</h2>
-    <p>Review your account activity and monthly statements as soon as they are available. Set up text or email alerts for large withdrawals, address changes, and online transactions. Watch for warning signs such as unfamiliar transactions, missing statements, unexpected alerts about account changes, or a sudden loss of mobile phone service, which could indicate a SIM-swap attack.</p>
+        .navbar.scrolled {
+            background: rgba(10, 10, 26, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 12px 60px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
 
-    <h2>Secure Your Devices and Networks</h2>
-    <p>Keep your operating system, browser, and security software set to update automatically. Avoid using public Wi-Fi for banking — if you must, use a trusted VPN. At home, secure your network with strong encryption and a robust password. Only enter financial information on websites that display "https" and a padlock icon in the address bar on every page, not just the login screen.</p>
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
 
-    <h2>Treat Your Personal Information Like Cash</h2>
-    <p>Your Social Security number, account numbers, and credit card details are valuable targets. Only provide them when you are certain of the recipient's legitimacy. Shred physical documents containing financial information before discarding them. If your credentials are ever compromised in a data breach, change the password immediately on that account and any other account that used the same login information.</p>
-  </body>
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ccc;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #particles-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-bg-gradient {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .hero-bg-gradient.g1 {
+            background: #7b2ff7;
+            top: -200px;
+            right: -100px;
+        }
+
+        .hero-bg-gradient.g2 {
+            background: #00d4ff;
+            bottom: -200px;
+            left: -100px;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 24px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: #00d4ff;
+            margin-bottom: 30px;
+            animation: fadeInDown 1s ease forwards;
+            opacity: 0;
+            backdrop-filter: blur(10px);
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 25px;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, #00d4ff, #7b2ff7, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #999;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.6s forwards;
+            opacity: 0;
+        }
+
+        .btn {
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+            color: #fff;
+            box-shadow: 0 4px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 35px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            border-color: #00d4ff;
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: bounce 2s ease infinite;
+        }
+
+        .scroll-indicator i {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 80px 60px;
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            position: relative;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: #888;
+            font-size: 0.95rem;
+            margin-top: 5px;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 120px 60px;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header .tag {
+            display: inline-block;
+            padding: 6px 20px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: #00d4ff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: #888;
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(180deg, #0a0a1a 0%, #0f0f2a 100%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 20px;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-image .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(123, 47, 247, 0.2));
+            border-radius: 20px;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #999;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .about-feature:hover {
+            background: rgba(0, 212, 255, 0.08);
+            border-color: rgba(0, 212, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        .about-feature i {
+            color: #00d4ff;
+            font-size: 1.1rem;
+        }
+
+        .about-feature span {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* Programs Section */
+        .programs {
+            background: #0f0f2a;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .program-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+            padding: 40px 30px;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .program-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 212, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .program-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(123, 47, 247, 0.15));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            transition: all 0.4s ease;
+        }
+
+        .program-card:hover .program-icon {
+            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .program-icon i {
+            font-size: 1.5rem;
+            color: #00d4ff;
+            transition: color 0.4s ease;
+        }
+
+        .program-card:hover .program-icon i {
+            color: #fff;
+        }
+
+        .program-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            transition: color 0.3s;
+        }
+
+        .program-card:hover h3 {
+            color: #00d4ff;
+        }
+
+        .program-card p {
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .program-link {
+            color: #00d4ff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s;
+        }
+
+        .program-link:hover {
+            gap: 14px;
+        }
+
+        /* Campus Life - Parallax */
+        .campus {
+            position: relative;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1562774053-701939374585?w=1600') center/cover;
+            transform: scale(1.1);
+            z-index: 0;
+        }
+
+        .campus-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 10, 26, 0.85);
+            z-index: 1;
+        }
+
+        .campus-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 60px;
+            max-width: 700px;
+        }
+
+        .campus-content h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .campus-content p {
+            color: #999;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            font-size: 1.05rem;
+        }
+
+        .campus-stats {
+            display: flex;
+            gap: 50px;
+        }
+
+        .campus-stat {
+            text-align: center;
+        }
+
+        .campus-stat h4 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .campus-stat p {
+            color: #888;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(180deg, #0a0a1a 0%, #0f0f2a 100%);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(123, 47, 247, 0.3);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .testimonial-stars {
+            color: #ffc107;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-card p {
+            color: #bbb;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .testimonial-info h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .testimonial-info span {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 120px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #7b2ff7, #00d4ff);
+            opacity: 0.1;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            color: #999;
+            max-width: 500px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        .footer {
+            background: #060612;
+            padding: 80px 60px 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .logo {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .footer-brand p {
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+            border-color: transparent;
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        .footer-col h4 {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            transition: all 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: #00d4ff;
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(12px); }
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 2.8rem; }
+            .section { padding: 80px 30px; }
+            .programs-grid, .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 25px; }
+            .nav-links { display: none; }
+            .hamburger { display: block; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .stats { flex-wrap: wrap; gap: 30px; }
+            .stat-number { font-size: 2rem; }
+            .programs-grid, .testimonials-grid { grid-template-columns: 1fr; }
+            .campus-content { padding: 0 30px; }
+            .campus-content h2 { font-size: 2rem; }
+            .campus-stats { flex-wrap: wrap; gap: 30px; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .section-header h2 { font-size: 2rem; }
+            .cta h2 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="logo">APEX COLLEGE</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#campus">Campus</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <canvas id="particles-canvas"></canvas>
+        <div class="hero-bg-gradient g1"></div>
+        <div class="hero-bg-gradient g2"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Admissions Open 2026</div>
+            <h1>Shape Your <span class="highlight">Future</span> With Us</h1>
+            <p>Join a community of innovators, thinkers, and leaders. Discover world-class education, cutting-edge research, and limitless possibilities.</p>
+            <div class="hero-buttons">
+                <a href="#programs" class="btn btn-primary">Explore Programs</a>
+                <a href="#about" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="stat-item reveal">
+            <div class="stat-number" data-target="15000">0</div>
+            <div class="stat-label">Students Enrolled</div>
+        </div>
+        <div class="stat-item reveal">
+            <div class="stat-number" data-target="250">0</div>
+            <div class="stat-label">Expert Faculty</div>
+        </div>
+        <div class="stat-item reveal">
+            <div class="stat-number" data-target="50">0</div>
+            <div class="stat-label">Programs Offered</div>
+        </div>
+        <div class="stat-item reveal">
+            <div class="stat-number" data-target="95">0</div>
+            <div class="stat-label">Placement Rate %</div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="about-grid">
+            <div class="about-image reveal-left">
+                <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800" alt="College Campus">
+                <div class="overlay"></div>
+            </div>
+            <div class="about-text reveal-right">
+                <div class="section-header" style="text-align: left; margin-bottom: 30px;">
+                    <span class="tag">About Us</span>
+                    <h2>A Legacy of Academic Excellence</h2>
+                </div>
+                <p>Founded in 1985, Apex College of Technology has been at the forefront of educational innovation. We combine traditional academic values with modern teaching methodologies to prepare students for the challenges of tomorrow.</p>
+                <p>Our campus spans 200 acres of state-of-the-art facilities, providing the perfect environment for learning, research, and personal growth.</p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Modern Laboratories</span>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Research Centers</span>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Sports Facilities</span>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Global Partnerships</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="section programs" id="programs">
+        <div class="section-header reveal">
+            <span class="tag">Our Programs</span>
+            <h2>Academic Excellence</h2>
+            <p>Choose from a wide range of undergraduate and graduate programs designed to prepare you for success.</p>
+        </div>
+        <div class="programs-grid">
+            <div class="program-card reveal">
+                <div class="program-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>Computer Science</h3>
+                <p>Master the art of programming, AI, machine learning, and software development with hands-on projects.</p>
+                <a href="#" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="program-card reveal">
+                <div class="program-icon"><i class="fas fa-cogs"></i></div>
+                <h3>Engineering</h3>
+                <p>Explore mechanical, civil, and electrical engineering with cutting-edge labs and industry partnerships.</p>
+                <a href="#" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="program-card reveal">
+                <div class="program-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Business Analytics</h3>
+                <p>Learn to drive business decisions through data insights, strategy, and modern management techniques.</p>
+                <a href="#" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="program-card reveal">
+                <div class="program-icon"><i class="fas fa-brain"></i></div>
+                <h3>Data Science</h3>
+                <p>Dive deep into big data, statistical modeling, and predictive analytics to solve real-world problems.</p>
+                <a href="#" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="program-card reveal">
+                <div class="program-icon"><i class="fas fa-paint-brush"></i></div>
+                <h3>Design & Media</h3>
+                <p>Unleash your creativity through graphic design, UX/UI, animation, and digital media production.</p>
+                <a href="#" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="program-card reveal">
+                <div class="program-icon"><i class="fas fa-flask"></i></div>
+                <h3>Biotechnology</h3>
+                <p>Explore the frontiers of life sciences, genetic engineering, and pharmaceutical research.</p>
+                <a href="#" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus Life - Parallax -->
+    <section class="campus" id="campus">
+        <div class="parallax-bg" id="parallax-bg"></div>
+        <div class="campus-overlay"></div>
+        <div class="campus-content reveal-left">
+            <span class="tag">Campus Life</span>
+            <h2>Experience Vibrant Campus Life</h2>
+            <p>Our campus is more than just classrooms. With 50+ student clubs, state-of-the-art sports facilities, cultural events, and a thriving community, every day is an adventure.</p>
+            <div class="campus-stats">
+                <div class="campus-stat">
+                    <h4>50+</h4>
+                    <p>Student Clubs</p>
+                </div>
+                <div class="campus-stat">
+                    <h4>200+</h4>
+                    <p>Acres Campus</p>
+                </div>
+                <div class="campus-stat">
+                    <h4>30+</h4>
+                    <p>Sports Facilities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials" id="testimonials">
+        <div class="section-header reveal">
+            <span class="tag">Testimonials</span>
+            <h2>What Our Students Say</h2>
+            <p>Hear from our alumni who have gone on to make remarkable contributions in their fields.</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"Apex College transformed my life. The faculty mentorship and hands-on projects gave me the confidence to land my dream job at a top tech company."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">SK</div>
+                    <div class="testimonial-info">
+                        <h4>Sarah Khan</h4>
+                        <span>Computer Science, 2024</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"The research facilities here are world-class. I published two papers during my undergraduate years, which helped me secure a fully-funded PhD abroad."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">RJ</div>
+                    <div class="testimonial-info">
+                        <h4>Rahul Joshi</h4>
+                        <span>Biotechnology, 2023</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"The campus life is incredible. From cultural fests to hackathons, there's always something exciting happening. Best four years of my life!"</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">AP</div>
+                    <div class="testimonial-info">
+                        <h4>Ananya Patel</h4>
+                        <span>Business Analytics, 2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="cta-bg"></div>
+        <div class="cta-content reveal">
+            <h2>Ready to Start Your Journey?</h2>
+            <p>Applications are now open for the 2026 academic year. Take the first step towards an extraordinary future.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">Apply Now</a>
+                <a href="#" class="btn btn-secondary">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo">APEX COLLEGE</div>
+                <p>Empowering minds, shaping futures. Join us in our mission to create the next generation of leaders and innovators.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="#">Admissions</a>
+                <a href="#">Academic Calendar</a>
+                <a href="#">Student Portal</a>
+                <a href="#">Library</a>
+                <a href="#">Career Services</a>
+            </div>
+            <div class="footer-col">
+                <h4>Programs</h4>
+                <a href="#">Computer Science</a>
+                <a href="#">Engineering</a>
+                <a href="#">Business</a>
+                <a href="#">Design</a>
+                <a href="#">Biotechnology</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="#">123 College Road, Tech City</a>
+                <a href="#">+1 (555) 123-4567</a>
+                <a href="#">info@apexcollege.edu</a>
+                <a href="#">Mon - Fri: 9AM - 5PM</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Apex College of Technology. All rights reserved.</p>
+            <p>Designed with passion for education</p>
+        </div>
+    </footer>
+
+    <script>
+        // Particle Background
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let mouse = { x: null, y: null };
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        canvas.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.8;
+                this.speedY = (Math.random() - 0.5) * 0.8;
+                this.opacity = Math.random() * 0.5 + 0.1;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+
+                // Mouse interaction
+                if (mouse.x != null) {
+                    const dx = mouse.x - this.x;
+                    const dy = mouse.y - this.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 150) {
+                        this.x -= dx * 0.01;
+                        this.y -= dy * 0.01;
+                    }
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(0, 212, 255, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const count = Math.min(120, Math.floor((canvas.width * canvas.height) / 12000));
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function connectParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 130) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(0, 212, 255, ${0.12 * (1 - dist / 130)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            connectParticles();
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Scroll reveal
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        const revealOnScroll = () => {
+            revealElements.forEach((el, i) => {
+                const top = el.getBoundingClientRect().top;
+                if (top < window.innerHeight - 100) {
+                    setTimeout(() => el.classList.add('active'), i * 80);
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Counter animation
+        const counters = document.querySelectorAll('.stat-number[data-target]');
+        let counterDone = false;
+        const animateCounters = () => {
+            if (counterDone) return;
+            counters.forEach(counter => {
+                const rect = counter.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 50) {
+                    counterDone = true;
+                    const target = +counter.getAttribute('data-target');
+                    const duration = 2000;
+                    const start = performance.now();
+                    const step = (now) => {
+                        const progress = Math.min((now - start) / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        counter.textContent = Math.floor(eased * target).toLocaleString() + (target >= 95 ? '%' : '+');
+                        if (progress < 1) requestAnimationFrame(step);
+                    };
+                    requestAnimationFrame(step);
+                }
+            });
+        };
+        window.addEventListener('scroll', animateCounters);
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const parallax = document.getElementById('parallax-bg');
+            if (parallax) {
+                const speed = 0.3;
+                parallax.style.transform = `scale(1.1) translateY(${window.scrollY * speed}px)`;
+            }
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '70px';
+            navLinks.style.right = '25px';
+            navLinks.style.background = 'rgba(10, 10, 26, 0.98)';
+            navLinks.style.padding = '20px';
+            navLinks.style.borderRadius = '16px';
+            navLinks.style.gap = '20px';
+            navLinks.style.boxShadow = '0 10px 40px rgba(0,0,0,0.5)';
+        });
+    </script>
+
+</body>
 </html>
